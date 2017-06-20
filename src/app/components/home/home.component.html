@@ -1,0 +1,18 @@
+﻿<p>home works!</p>
+
+<ng-table [config]="config"
+          (tableChanged)="onChangeTable(config)"
+          (cellClicked)="onCellClick($event)"
+          [rows]="config.rows" [columns]="config.columns">
+</ng-table>
+<pagination 
+            class="pagination-sm"
+            [(ngModel)]="config.page"
+            [totalItems]="config.length"
+            [itemsPerPage]="config.itemsPerPage"
+            [maxSize]="config.maxSize"
+            [boundaryLinks]="true"
+            [rotate]="false"
+            (pageChanged)="onChangeTable(config, $event)"
+            (numPages)="config.numPages = $event">
+</pagination>

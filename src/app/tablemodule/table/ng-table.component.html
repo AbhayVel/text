@@ -1,0 +1,29 @@
+﻿<table class="table dataTable" ngClass="{{config.className || ''}}"
+       role="grid" style="width: 100%;">
+    <thead>
+        <tr role="row">
+            <th *ngFor="let column of columns" [ngTableSorting]="config" [column]="column"   
+                (sortChanged)="onSortChangeTable($event)" ngClass="{{column.className || ''}} {{(column.sort === ''  ||column.sort === 'desc'  || column.sort === 'asc' || column.sort === '-') ?'sort' :''}}" (click)="headerClick(column,$event)">
+                <span [innerHtml]="sanitize(column.title)"> </span>
+                <i *ngIf="config && (column.sort === 'desc'  || column.sort === 'asc')" class="pull-right fa"
+                   [ngClass]="{'fa-chevron-down': column.sort === 'desc' , 'fa-chevron-up': column.sort === 'asc'}"></i>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngIf="showFilterRow">
+            <td *ngFor="let column of columns">
+                <calendar *ngIf="column.isDate==true" [dateModel]="column.dDate" [isRequired]="isRequired"  [placeholder]="column.filtering.placeholder"  (callBackEvent)="callBackEvent($event,column)"></calendar>
+
+                <input *ngIf="column.filtering && column.isDate!=true"  placeholder="{{column.filtering.placeholder}}"
+                       [ngTableFiltering]="column.filtering"
+                       class="form-control"
+                       style="width: auto;"
+                       (tableChanged)="onChangeTable(config)" />
+            </td>
+        </tr>
+        <tr *ngFor="let row of rows">
+            <td (click)="cellClick(row, column,$event)" *ngFor="let column of columns" [innerHtml]="sanitize(getData(row, column))"></td>
+        </tr>
+    </tbody>
+</table>

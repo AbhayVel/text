@@ -1,0 +1,16 @@
+﻿<div (clickOutside)="onClickedOutside($event)">
+    <input [ngModel]="dateModel | date:'MM/dd/yyyy'" name="begin" #begin="ngModel" class="form-control dropdown-readonly" placeholder="{{placeholder}}" (focus)="showPopup()" (blur)="setValue(begin)" required />
+    <div *ngIf="begin.errors && begin.dirty && isRequired"
+         class="alert alert-danger">
+        <div [hidden]="!begin.errors.required">
+            Begin date is required
+        </div>
+    </div>
+    <datepicker class="popup" *ngIf="showDatepicker"
+                (selectionDone)="onSelectionDone($event)"
+                [(ngModel)]="dateModel"
+                [showWeeks]="false"
+                [onlyCurrentMonth]=true
+                [minDate]="minDate">
+    </datepicker>
+</div>
