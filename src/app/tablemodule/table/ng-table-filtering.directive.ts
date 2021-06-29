@@ -1,8 +1,8 @@
-﻿import { Directive, EventEmitter, ElementRef, Renderer, HostListener, Input, Output } from '@angular/core';
+import { Directive, EventEmitter, ElementRef, Renderer2, HostListener, Input, Output } from '@angular/core';
 
 // import {setProperty} from 'angular2/ts/src/core/forms/directives/shared';
-function setProperty(renderer:Renderer, elementRef:ElementRef, propName:string, propValue:any):void {
-  renderer.setElementProperty(elementRef, propName, propValue);
+function setProperty(renderer:Renderer2, elementRef:ElementRef, propName:string, propValue:any):void {
+  renderer.setAttribute(elementRef.nativeElement, propName, propValue);
 }
 
 @Directive({selector: '[ngTableFiltering]'})
@@ -24,7 +24,7 @@ export class NgTableFilteringDirective {
   }
 
   private element:ElementRef;
-  private renderer:Renderer;
+  private renderer:Renderer2;
 
   @HostListener('input', ['$event.target.value'])
   public onChangeFilter(event:any):void {
@@ -32,7 +32,7 @@ export class NgTableFilteringDirective {
     this.tableChanged.emit({filtering: this.ngTableFiltering});
   }
 
-  public constructor(element:ElementRef, renderer:Renderer) {
+  public constructor(element:ElementRef, renderer:Renderer2) {
     this.element = element;
     this.renderer = renderer;
     // Set default value for filter

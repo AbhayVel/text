@@ -1,4 +1,4 @@
-﻿/// <reference path="table/grid.service.ts" />
+/// <reference path="table/grid.service.ts" />
 import { NgModule, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -7,7 +7,7 @@ import { NgTableComponent } from './table/ng-table.component';
 import { NgTableFilteringDirective } from './table/ng-table-filtering.directive';
 import { NgTablePagingDirective } from './table/ng-table-paging.directive';
 import { NgTableSortingDirective } from './table/ng-table-sorting.directive';
-import { DatepickerModule, ModalModule } from 'ngx-bootstrap';
+import { DatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CustomDatepickerModule } from '../datepickermodule/datepicker.module';
 import { PaginationConfig } from './table/paginationconfig.service'
 export { PaginationConfig } from './table/paginationconfig.service'
@@ -23,7 +23,7 @@ export { NgTableSortingDirective } from './table/ng-table-sorting.directive';
 
 @NgModule({
     imports: [CommonModule, FormsModule, BrowserModule,
-        ModalModule.forRoot(),
+    DatepickerModule.forRoot(),
         CustomDatepickerModule
     ],
     declarations: [NgTableComponent, NgTableFilteringDirective, NgTablePagingDirective, NgTableSortingDirective],

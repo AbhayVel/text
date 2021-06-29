@@ -1,4 +1,4 @@
-﻿import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import {
     Directive,
     ElementRef,
@@ -13,15 +13,14 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
-import { DOCUMENT } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
 import { CustomDatepickerComponent } from './datepicker.component';
 import { CustomClickOutsideDirective } from './datepicker.outside.directive';
 import { FormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {  ModalModule, DatepickerModule } from 'ngx-bootstrap';
+import { DatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
-    imports: [CommonModule, FormsModule, BrowserModule,
-        ModalModule.forRoot(),
+    imports: [CommonModule, FormsModule, BrowserModule,          
         DatepickerModule.forRoot()
     ],
     declarations: [CustomDatepickerComponent, CustomClickOutsideDirective],

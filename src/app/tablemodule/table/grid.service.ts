@@ -1,4 +1,4 @@
-﻿import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 
 /**
@@ -18,8 +18,8 @@ export class GridService {
             return data;
         }
         let columns = config.sorting.columns || [];
-        let columnName: string = void 0;
-        let sort: string = void 0;
+        let columnName: any = void 0;
+        let sort: any = void 0;
         let sortNumber=-1;
         for (let i = 0; i < columns.length; i++) {
             if (columns[i].sort !== '-' && columns[i].sort !== false) {
@@ -34,8 +34,8 @@ export class GridService {
         // simple sorting
         let sortedData= data.sort((previous: any, current: any) => {
 
-            let previousValue = columnName.split('.').reduce(function (prev, curr) { return prev[curr] }, previous);
-            let currentValue = columnName.split('.').reduce(function (prev, curr) { return prev[curr] }, current);
+            let previousValue = columnName.split('.').reduce(function (prev: any, curr: any) { return prev[curr] }, previous);
+            let currentValue = columnName.split('.').reduce(function (prev : any, curr: any) { return prev[curr] }, current);
             if (typeof previousValue == 'string')
             {
                 previousValue = previousValue ? previousValue.toLowerCase() : previousValue;
@@ -53,7 +53,7 @@ export class GridService {
         return sortedData;
     }
 
-    match(filterBy, comparefilterBy, isDate, offset) {
+    match(filterBy : any , comparefilterBy: any, isDate: any, offset: any) {
         
         if (filterBy === "" || filterBy === undefined || filterBy ==null) {
             return true;
@@ -96,7 +96,7 @@ export class GridService {
         config.columns.forEach((column: any) => {
             if (column.filtering) {
                 filteredData = filteredData.filter((item: any) => {
-                    let value = column.name.split('.').reduce(function (prev, curr) { return prev[curr] }, item);
+                    let value = column.name.split('.').reduce(function (prev: any, curr: any) { return prev[curr] }, item);
                     return this.match(column.filtering.filterString, value, column.isDate, column.offset);                    
                 });
             }
@@ -108,7 +108,7 @@ export class GridService {
 
         if (config.filtering.columnName) {
             return filteredData.filter((item: any) => {
-                let value = config.filtering.columnName.split('.').reduce(function (prev, curr) { return prev[curr] }, item);
+                let value = config.filtering.columnName.split('.').reduce(function (prev: any, curr: any) { return prev[curr] }, item);
                 return this.match(config.filtering.filterString, value,null,null);               
             });
         }
@@ -117,7 +117,7 @@ export class GridService {
         filteredData.forEach((item: any) => {
             let flag = false;
             config.columns.forEach((column: any) => {
-                let value = column.name.split('.').reduce(function (prev, curr) { return prev[curr] }, item);
+                let value = column.name.split('.').reduce(function (prev: any, curr: any) { return prev[curr] }, item);
                 flag = this.match(config.filtering.filterString, value, column.isDate, column.offset) || flag;                
             });
             if (flag) {

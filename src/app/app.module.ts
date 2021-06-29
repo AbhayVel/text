@@ -1,10 +1,10 @@
-﻿import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { DatepickerModule, PaginationModule } from 'ngx-bootstrap';
+import { DatepickerModule } from 'ngx-bootstrap/datepicker';
+import {  PaginationModule } from 'ngx-bootstrap/pagination';
 import { Ng2TableModule, PaginationConfig,GridService } from './tablemodule/ng-table-module';
 import { CustomDatepickerModule } from './datepickermodule/datepicker.module';
 import { HomeComponent } from './components/home/home.component';
@@ -17,7 +17,7 @@ import { HomeComponent } from './components/home/home.component';
   imports: [
     BrowserModule,
     FormsModule,
-      HttpModule,
+      
       Ng2TableModule,
       CustomDatepickerModule,
       PaginationModule.forRoot(),

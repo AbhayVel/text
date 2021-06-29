@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GridService } from '../../tablemodule/ng-table-module'
 
 @Component({
@@ -8,7 +8,7 @@ import { GridService } from '../../tablemodule/ng-table-module'
 })
 export class HomeComponent implements OnInit {
 
-    data = [
+    data: any = [
         {
             id: 1,
            name: "Abhay"
@@ -20,14 +20,102 @@ export class HomeComponent implements OnInit {
         {
             id: 3,
             name: "Kalpesh"
-        }
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      },
+      {
+        id: 3,
+        name: "Kalpesh"
+      }
 
     ];
     private columns: Array<any> = [
         { title: 'Name', name: 'name', sort: 'asc', filtering: { filterString: '', placeholder: 'Filter by name' } },
         { title: 'Action', name: 'action', html: '<button class="btn" key="edit"><i key="edit" class="glyphicon glyphicon-edit"></i>&nbsp;Edit</button>&nbsp;&nbsp;<button class="btn" key="delete"><i key="delete" class="glyphicon glyphicon-remove"></i>&nbsp;Delete</button>', isCustom: true, sort: false, isHeaderClicked: true }
     ];
-    public config=  {
+    public config: any=  {
         paging: true,
         columns: this.columns,
         sorting: { columns: this.columns },

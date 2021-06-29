@@ -1,4 +1,4 @@
-﻿import {
+import {
     Directive,
     ElementRef,
     EventEmitter,
@@ -10,7 +10,7 @@
     Output,
     SimpleChanges
 } from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
 
 @Directive({ selector: '[clickOutside]' })
 export class CustomClickOutsideDirective implements OnInit, OnDestroy, OnChanges {
@@ -18,7 +18,7 @@ export class CustomClickOutsideDirective implements OnInit, OnDestroy, OnChanges
     @Output() clickOutside: EventEmitter<Event> = new EventEmitter<Event>();
 
     constructor(
-        @Inject(DOCUMENT) private _document /*: HTMLDocument*/,
+        @Inject(DOCUMENT) private _document: any /*: HTMLDocument*/,
         private _el: ElementRef) {
         this._initOnClickBody = this._initOnClickBody.bind(this);
         this._onClickBody = this._onClickBody.bind(this);

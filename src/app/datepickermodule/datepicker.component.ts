@@ -1,4 +1,4 @@
-﻿import { Component, Input, Output, ElementRef, EventEmitter, ViewChild} from '@angular/core';
+import { Component, Input, Output, ElementRef, EventEmitter, ViewChild} from '@angular/core';
 
 @Component({
     selector: 'calendar',
@@ -9,17 +9,17 @@
     styles: []
 })
 export class CustomDatepickerComponent {
-    @Input() dateModel: Date;
-    @Input() minDate: Date;
+  @Input('dateModel') dateModel: any;
+  @Input('minDate') minDate: any;
     @Input() isRequired: boolean = true;
     @Input() placeholder: string = '';
     @Output() callBackEvent: EventEmitter<any> = new EventEmitter<any>();
-    @ViewChild('begin') begin: Element;
-    private showDatepicker: boolean = false;
+    @ViewChild('begin') begin: any;
+    public showDatepicker: boolean = false;
 
     constructor(private _eref: ElementRef) { }
  
-    onClickedOutside(event) {
+    onClickedOutside(event: any) {
         if (!this._eref.nativeElement.contains(event.target)) {
             this.showDatepicker = false;
         }
@@ -35,13 +35,13 @@ export class CustomDatepickerComponent {
             this.dateModel = null;
         }
     }
-    onClick(event) {
+    onClick(event: any) {
         if (!this._eref.nativeElement.contains(event.target)) {
             this.showDatepicker = false;
         }
     }
 
-    onSelectionDone(event) {
+    onSelectionDone(event: any) {
         this.callBackEvent.emit(event);
     }
 }

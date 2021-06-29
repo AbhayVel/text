@@ -1,4 +1,4 @@
-﻿import { Component, EventEmitter, Input, Output, DoCheck } from '@angular/core';
+import { Component, EventEmitter, Input, Output, DoCheck } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CustomDatepickerModule } from '../../datepickermodule/datepicker.module';
 
@@ -92,7 +92,7 @@ export class NgTableComponent implements DoCheck {
         }
     }
 
-    callBackEvent($event, column: any) {
+    callBackEvent($event : any, column: any) {
         if (column.transform && column.transformParameter) {
             
             let offSet = column.transformParameter[column.transformParameter.length - 1].modal.offset;
